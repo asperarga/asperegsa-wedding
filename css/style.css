@@ -768,7 +768,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: inline-block;
   zoom: 1;
   *display: inline;
-  color: #46BE75;
+  color: #62D38E;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -879,7 +879,7 @@ form label {
 .fh5co-cover .display-tc .btn {
   padding: 15px 20px;
   background: #fff !important;
-  color: #46BE75;
+  color: #62D38E;
   border: none !important;
   font-size: 14px;
   text-transform: uppercase;
@@ -1043,7 +1043,7 @@ form label {
   font-size: 20px;
   background: #fff;
   padding: 20px;
-  color: #46BE75;
+  color: #62D38E;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -1066,7 +1066,7 @@ form label {
 }
 .couple-half h3 {
   font-family: "Sacramento", Arial, serif;
-  color: #46BE75;
+  color: #62D38E;
   font-size: 30px;
 }
 .couple-half .groom, .couple-half .bride {
@@ -1181,7 +1181,7 @@ form label {
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: bold;
-  color: #46BE75;
+  color: #62D38E;
   font-family: "Sacramento", Arial, serif;
 }
 @media screen and (max-width: 768px) {
@@ -1374,7 +1374,7 @@ form label {
 #fh5co-started .btn {
   height: 54px;
   border: none !important;
-  background: #b7b7b7;
+  background: #62D38E;
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
