@@ -49,6 +49,10 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script src="https://unpkg.com/prefixfree@1.0.0/prefixfree.min.js"></script>
+	<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+	<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+	<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
 
 	</head>
 	<body>
@@ -369,23 +373,36 @@
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-10 col-md-offset-1">
-					<form class="form-inline">
+					<form class="form-inline" name="submit-to-google-sheet">
 						<div class="col-md-4 col-sm-4">
+							<p>
 							<div class="form-group">
 								<label for="name" class="sr-only">Name</label>
-								<input type="name" class="form-control" id="name" placeholder="Name">
+								<input type="name" class="form-control" id="name" placeholder="Name" name="Name">
 							</div>
+							</p>
 						</div>
 						<div class="col-md-4 col-sm-4">
+							<p>
 							<div class="form-group">
 								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
+								<input type="email" class="form-control" id="email" placeholder="Email" name="Email">
 							</div>
+							</p>
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">I'll be there</button>
+							<button type="submit" class="btn btn-default btn-block trigger_popup_fricc">I'll be there</button>
 						</div>
 					</form>
+					
+					<div class="hover_bkgr_fricc">
+						<span class="helper"></span>
+						<div>
+							<div class="popupCloseButton">X</div>
+							Terima kasih.<br>Kami tunggu kehadiran Anda.
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -442,16 +459,52 @@
 	<script src="js/main.js"></script>
 
 	<script>
-    $('.simply-countdown-one').simplyCountdown({
-		year: 2018,
-		month: 12,
-		day: 2,
-		hours: 9,
-		minutes: 00,
-		second: 0,
-        enableUtc: false
-    });
-</script>
+		$('.simply-countdown-one').simplyCountdown({
+			year: 2018,
+			month: 12,
+			day: 2,
+			hours: 9,
+			minutes: 00,
+			second: 0,
+			enableUtc: false
+		});
+	</script>
+
+	<script>
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbyrLszBHDVrDfWnCzH3PKMKvtvLEW4RkqQAk41WAQ6RvX1mzQk/exec'
+		const form = document.forms['submit-to-google-sheet']
+		
+		/*form.addEventListener('submit', e => {
+		  e.preventDefault()
+		  showLoadingIndicator()
+		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => showSuccessMessage(response))
+			.catch(error => showErrorMessage(error))
+		})*/
+
+		form.addEventListener('submit', e => {
+			e.preventDefault()
+			fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => console.log('Success!', response))
+			.catch(error => console.error('Error!', error.message))
+		})
+		
+	</script>
+	
+	<script>
+		$(window).load(function () {
+			$(".trigger_popup_fricc").click(function(){
+			   $('.hover_bkgr_fricc').show();
+			});
+			$('.hover_bkgr_fricc').click(function(){
+				$('.hover_bkgr_fricc').hide();
+			});
+			$('.popupCloseButton').click(function(){
+				$('.hover_bkgr_fricc').hide();
+			});
+		});
+	</script>
+	
 
 	</body>
 </html>
